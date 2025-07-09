@@ -1,0 +1,25 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowReadCloudTrailLogs",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<your-cloudtrail-bucket-name>",
+        "arn:aws:s3:::<your-cloudtrail-bucket-name>/*"
+      ]
+    },
+    {
+      "Sid": "OptionalAllowDeleteAfterProcessing",
+      "Effect": "Allow",
+      "Action": [
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::<your-cloudtrail-bucket-name>/*"
+    }
+  ]
+}
