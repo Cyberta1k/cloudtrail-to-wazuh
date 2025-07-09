@@ -1,0 +1,37 @@
+<group name="aws,cloudtrail,">
+  <rule id="100001" level="10">
+    <decoded_as>json</decoded_as>
+    <field name="eventName">PutUserPolicy|PutGroupPolicy|PutRolePolicy|AttachUserPolicy|AttachRolePolicy</field>
+    <description>AWS IAM policy change detected</description>
+    <mitre>
+      <id>T1484</id>
+    </mitre>
+    <group>iam_policy_change,</group>
+    <frequency>1</frequency>
+    <firedtimes>1</firedtimes>
+  </rule>
+
+  <rule id="100002" level="12">
+    <decoded_as>json</decoded_as>
+    <field name="userIdentity.type">Root</field>
+    <description>AWS Root account activity detected</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>root_account_activity,</group>
+    <frequency>1</frequency>
+    <firedtimes>1</firedtimes>
+  </rule>
+
+  <rule id="100003" level="9">
+    <decoded_as>json</decoded_as>
+    <field name="errorCode">AccessDenied|UnauthorizedOperation</field>
+    <description>AWS Unauthorized API call detected</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>unauthorized_api,</group>
+    <frequency>1</frequency>
+    <firedtimes>1</firedtimes>
+  </rule>
+</group>
