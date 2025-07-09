@@ -55,3 +55,33 @@ The [`iam/wazuh-manager-policy.json`](iam/wazuh-manager-policy.json) file define
 
 📄 View the policy: [`iam/wazuh-manager-policy.json`](iam/wazuh-manager-policy.json)
 
+---
+
+## ⚙️ Wazuh Configuration
+
+The [`wazuh/ossec.conf`](wazuh/ossec.conf) file includes an `<aws-s3>` block that tells Wazuh how to pull logs from the S3 bucket.
+
+- `bucket_name`: The S3 bucket containing CloudTrail logs
+- `interval`: How often Wazuh should check for new logs (e.g., every 5 mins)
+- `only_logs_after`: Ensures Wazuh only pulls recent logs (last 7 days)
+
+📄 View the config: [`wazuh/ossec.conf`](wazuh/ossec.conf)
+
+
+---
+
+## Detection Rules
+
+The [`detections/cloudtrail-iam-alert.xml`](detections/cloudtrail-iam-alert.xml) file contains sample Wazuh rules for:
+
+- **IAM policy changes** (`PutUserPolicy`, `AttachRolePolicy`)
+- **Root account usage**
+- **Unauthorized API calls**
+
+These rules help detect:
+- Privilege escalation attempts
+- Root account misuse
+- Cloud misconfigurations or compromise
+
+📄 View the rules: [`detections/cloudtrail-iam-alert.xml`](detections/cloudtrail-iam-alert.xml)
+
